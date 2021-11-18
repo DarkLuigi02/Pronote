@@ -53,16 +53,51 @@ class _MyHomePageState extends State<MyHomePage> {
     color: Colors.white,
   );
   int _note1 = 10;
+  int _note2 = 10;
+  int _note3 = 10;
+  int _note4 = 10;
+  int _note5 = 10;
+  int _note6 = 10;
+  int _note7 = 10;
 
   void _addThis() {
     setState(() {
       if (_note1 != 20) {
-        // This call to setState tells the Flutter framework that something has
-        // changed in this State, which causes it to rerun the build method below
-        // so that the display can reflect the updated values. If we changed
-        // _counter without calling setState(), then the build method would not be
-        // called again, and so nothing would appear to happen.
         _note1++;
+      }
+      if (_note2 != 20) {
+        _note1++;
+      }
+      if (_note3 != 20) {
+        _note1++;
+      }
+      if (_note4 != 20) {
+        _note1++;
+      }
+      if (_note5 != 20) {
+        _note1++;
+      }
+      if (_note6 != 20) {
+        _note1++;
+      }
+      if (_note7 != 20) {
+        _note1++;
+      }
+    });
+  }
+
+  void incrementThis(note) {
+    setState(() {
+      if (note != 20) {
+        note++;
+      }
+    });
+  }
+
+  void _decrementThis(note) {
+    setState(() {
+      if (note != 0) {
+        note--;
       }
     });
   }
@@ -73,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
       switch (_indexSelectionne) {
         case 0:
           {
-            _affichage = _indexSelectionne = 10;
+            _affichage = _indexSelectionne = _note1;
           }
           break;
         case 2:
@@ -81,6 +116,33 @@ class _MyHomePageState extends State<MyHomePage> {
             _affichage = _indexSelectionne = 10;
           }
           break;
+      }
+    });
+  }
+
+  int _index = 0;
+  final List<Step> _steps = [
+    const Step(title: Text('note 1'), content: Text('10')),
+    const Step(title: Text('note 2'), content: Text('10')),
+    const Step(title: Text('note 3'), content: Text('10')),
+    const Step(title: Text('note 4'), content: Text('10')),
+    const Step(title: Text('note 5'), content: Text('10')),
+    const Step(title: Text('note 6'), content: Text('10')),
+    const Step(title: Text('note 7'), content: Text('10')),
+  ];
+
+  void _incrementStepper() {
+    setState(() {
+      if ((_index >= 0) && (_index < _steps.length - 1)) {
+        _index++;
+      }
+    });
+  }
+
+  void _decrementStepper() {
+    setState(() {
+      if (_index > 0 && _index < _steps.length) {
+        _index--;
       }
     });
   }
@@ -97,16 +159,195 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
         backgroundColor: Colors.red,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              '$_affichage',
-              style: const TextStyle(color: Colors.red, fontSize: 40),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Expanded(
+              flex: 2,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Transform.rotate(
+                    angle: 0,
+                    child: const Text(
+                      'Matière',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Transform.rotate(
+                    angle: 0,
+                    child: const Text(
+                      'Coef',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.deepOrange,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Transform.rotate(
+                    angle: 0,
+                    child: const Text(
+                      'Note',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Transform.rotate(
+                    angle: 14,
+                    child: const Text(
+                      '',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Transform.rotate(
+                    angle: 14,
+                    child: const Text(
+                      '',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              )),
+          const Divider(
+            color: Colors.white,
+          ),
+          Expanded(
+            flex: 20,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Container(
+                      child: const Text('Français'),
+                      color: Colors.white,
+                      margin: const EdgeInsets.only(bottom: 30),
+                    ),
+                    Container(
+                      child: const Text('Anglais'),
+                      color: Colors.white,
+                      margin: const EdgeInsets.only(bottom: 30),
+                    ),
+                    Container(
+                      child: const Text('Math'),
+                      color: Colors.white,
+                      margin: const EdgeInsets.only(bottom: 30),
+                    ),
+                    Container(
+                      child: const Text('Cejm'),
+                      color: Colors.white,
+                      margin: const EdgeInsets.only(bottom: 30),
+                    ),
+                    Container(
+                      child: const Text('E4'),
+                      color: Colors.white,
+                      margin: const EdgeInsets.only(bottom: 30),
+                    ),
+                    Container(
+                      child: const Text('E5'),
+                      color: Colors.white,
+                      margin: const EdgeInsets.only(bottom: 30),
+                    ),
+                    Container(
+                      child: const Text('E6'),
+                      color: Colors.white,
+                      margin: const EdgeInsets.only(bottom: 30),
+                    ),
+                  ],
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Stepper(
+                      steps: _steps,
+                    ),
+                  ],
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    const Text(
+                      'Stepper',
+                    ),
+                    Stepper(
+                      steps: _steps,
+                      onStepContinue: _incrementStepper,
+                      onStepCancel: _decrementStepper,
+                      currentStep: _index,
+                    ),
+                  ],
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Icon(
+                      Icons.android,
+                      color: Colors.red,
+                    ),
+                    Icon(
+                      Icons.home,
+                      color: Colors.red,
+                    ),
+                    Icon(
+                      Icons.build,
+                      color: Colors.red,
+                    ),
+                    Icon(
+                      Icons.phone,
+                      color: Colors.red,
+                    ),
+                    Icon(
+                      Icons.group,
+                      color: Colors.red,
+                    )
+                  ],
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Icon(
+                      Icons.android,
+                      color: Colors.purple,
+                    ),
+                    Icon(
+                      Icons.home,
+                      color: Colors.purple,
+                    ),
+                    Icon(
+                      Icons.build,
+                      color: Colors.purple,
+                    ),
+                    Icon(
+                      Icons.phone,
+                      color: Colors.purple,
+                    ),
+                    Icon(
+                      Icons.group,
+                      color: Colors.purple,
+                    )
+                  ],
+                ),
+              ],
             ),
-          ],
-        ),
+          )
+        ],
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: _addThis, backgroundColor: Colors.red, child: add),
@@ -149,13 +390,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.supervised_user_circle,
-              color: Colors.white,
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.assessment,
               color: Colors.white,
             ),
@@ -179,7 +413,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Text('Lien 1'),
-            Text(''),
             Text('Lien 3'),
           ],
         ),
