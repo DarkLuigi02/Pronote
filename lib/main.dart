@@ -66,22 +66,22 @@ class _MyHomePageState extends State<MyHomePage> {
         _note1++;
       }
       if (_note2 != 20) {
-        _note1++;
+        _note2++;
       }
       if (_note3 != 20) {
-        _note1++;
+        _note3++;
       }
       if (_note4 != 20) {
-        _note1++;
+        _note4++;
       }
       if (_note5 != 20) {
-        _note1++;
+        _note5++;
       }
       if (_note6 != 20) {
-        _note1++;
+        _note6++;
       }
       if (_note7 != 20) {
-        _note1++;
+        _note7++;
       }
     });
   }
@@ -101,6 +101,9 @@ class _MyHomePageState extends State<MyHomePage> {
       }
     });
   }
+  void buttonMinusOnPressed() {
+    incrementThis(_note1);
+  }
 
   void _itemClique(int index) {
     setState(() {
@@ -108,47 +111,40 @@ class _MyHomePageState extends State<MyHomePage> {
       switch (_indexSelectionne) {
         case 0:
           {
-            _affichage = _indexSelectionne = _note1;
+            int _note = 0;
+            _note = _note1 * 2 +
+                _note2 * 2 +
+                _note3 * 3 +
+                _note4 * 3 +
+                _note5 * 4 +
+                _note6 * 4 +
+                _note7 * 4;
+            if (_note < 10) {
+              _affichage = "Vous n'avez pas le bts";
+            } else {
+              _affichage = "Vous avez le bts";
+            }
           }
           break;
         case 2:
           {
-            _affichage = _indexSelectionne = 10;
+            _note1 = _indexSelectionne = 10;
+            _note2 = _indexSelectionne = 10;
+            _note3 = _indexSelectionne = 10;
+            _note4 = _indexSelectionne = 10;
+            _note5 = _indexSelectionne = 10;
+            _note6 = _indexSelectionne = 10;
+            _note7 = _indexSelectionne = 10;
           }
           break;
       }
     });
   }
 
+  String _affichage = "";
   int _index = 0;
-  final List<Step> _steps = [
-    const Step(title: Text('note 1'), content: Text('10')),
-    const Step(title: Text('note 2'), content: Text('10')),
-    const Step(title: Text('note 3'), content: Text('10')),
-    const Step(title: Text('note 4'), content: Text('10')),
-    const Step(title: Text('note 5'), content: Text('10')),
-    const Step(title: Text('note 6'), content: Text('10')),
-    const Step(title: Text('note 7'), content: Text('10')),
-  ];
-
-  void _incrementStepper() {
-    setState(() {
-      if ((_index >= 0) && (_index < _steps.length - 1)) {
-        _index++;
-      }
-    });
-  }
-
-  void _decrementStepper() {
-    setState(() {
-      if (_index > 0 && _index < _steps.length) {
-        _index--;
-      }
-    });
-  }
 
   int _indexSelectionne = 0;
-  int _affichage = 10;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -274,75 +270,48 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Stepper(
-                      steps: _steps,
-                    ),
+                  children: const <Widget>[
+                    Text('2'),
+                    Text('2'),
+                    Text('3'),
+                    Text('3'),
+                    Text('4'),
+                    Text('4'),
+                    Text('4'),
                   ],
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    const Text(
-                      'Stepper',
-                    ),
-                    Stepper(
-                      steps: _steps,
-                      onStepContinue: _incrementStepper,
-                      onStepCancel: _decrementStepper,
-                      currentStep: _index,
-                    ),
+                    Text('$_note1'),
+                    Text('$_note2'),
+                    Text('$_note3'),
+                    Text('$_note4'),
+                    Text('$_note5'),
+                    Text('$_note6'),
+                    Text('$_note7'),
                   ],
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Icon(
-                      Icons.android,
-                      color: Colors.red,
+                  children: const <Widget>[
+                    Padding(padding: EdgeInsets.all(30)),
+                    ElevatedButton(
+                    onPressed: buttonMinusOnPressed),
+                    child: Text(
+                    '-',
+                    style: TextStyle(color: Colors.white),
                     ),
-                    Icon(
-                      Icons.home,
-                      color: Colors.red,
-                    ),
-                    Icon(
-                      Icons.build,
-                      color: Colors.red,
-                    ),
-                    Icon(
-                      Icons.phone,
-                      color: Colors.red,
-                    ),
-                    Icon(
-                      Icons.group,
-                      color: Colors.red,
-                    )
+                    style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.resolveWith((states) => Colors.red),
+                    elevation: MaterialStateProperty.resolveWith((states) => 8),
+              ),
+            ),
                   ],
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Icon(
-                      Icons.android,
-                      color: Colors.purple,
-                    ),
-                    Icon(
-                      Icons.home,
-                      color: Colors.purple,
-                    ),
-                    Icon(
-                      Icons.build,
-                      color: Colors.purple,
-                    ),
-                    Icon(
-                      Icons.phone,
-                      color: Colors.purple,
-                    ),
-                    Icon(
-                      Icons.group,
-                      color: Colors.purple,
-                    )
-                  ],
+                  children: const <Widget>[],
                 ),
               ],
             ),
@@ -352,33 +321,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
           onPressed: _addThis, backgroundColor: Colors.red, child: add),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      /*bottomNavigationBar: BottomAppBar(
-        color: Colors.red,
-        child: Container(
-          height: 50,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const <Widget>[
-              IconButton(
-                icon: Icon(
-                  Icons.add_location,
-                  color: Colors.white,
-                ),
-                onPressed: null,
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.forward,
-                  color: Colors.white,
-                ),
-                onPressed: null,
-              ),
-            ],
-          ),
-        ),
-        shape: CircularNotchedRectangle(),
-      ),*/
-
+      
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
