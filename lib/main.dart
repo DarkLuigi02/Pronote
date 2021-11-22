@@ -48,9 +48,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Icon remove = const Icon(
+    Icons.remove,
+    color: Colors.black,
+  );
   Icon add = const Icon(
     Icons.add,
-    color: Colors.white,
+    color: Colors.black,
   );
   int _note1 = 10;
   int _note2 = 10;
@@ -86,25 +90,85 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  _incrementThis(int _note) {
+  _incrementThis(String note) {
     setState(() {
-      if (_note != 20) {
-        _note++;
+      if (note == "_note1") {
+        if (_note1 != 20) {
+          _note1++;
+        }
       }
+      if (note == "_note2") {
+        if (_note2 != 20) {
+          _note2++;
+        }
+      }
+      if (note == "_note3") {
+        if (_note3 != 20) {
+          _note3++;
+        }
+      }
+      if (note == "_note4") {
+        if (_note4 != 20) {
+          _note4++;
+        }
+      }
+      if (note == "_note5") {
+        if (_note5 != 20) {
+          _note5++;
+        }
+      }
+      if (note == "_note6") {
+        if (_note6 != 20) {
+          _note6++;
+        }
+      }
+      if (note == "_note7") {
+        if (_note7 != 20) {
+          _note7++;
+        }
+      }
+
+      //_affichage = "$note";
     });
   }
 
-  /*_decrementThis(int note) {
+  _decrementThis(String note) {
     setState(() {
-      if (note != 0) {
-        note--;
+      if (note == "_note1") {
+        if (_note1 != 20) {
+          _note1--;
+        }
       }
-    });
-  }*/
-
-  _decrementThis(int note) {
-    setState(() {
-      note--;
+      if (note == "_note2") {
+        if (_note2 != 20) {
+          _note2--;
+        }
+      }
+      if (note == "_note3") {
+        if (_note3 != 20) {
+          _note3--;
+        }
+      }
+      if (note == "_note4") {
+        if (_note4 != 20) {
+          _note4--;
+        }
+      }
+      if (note == "_note5") {
+        if (_note5 != 20) {
+          _note5--;
+        }
+      }
+      if (note == "_note6") {
+        if (_note6 != 20) {
+          _note6--;
+        }
+      }
+      if (note == "_note7") {
+        if (_note7 != 20) {
+          _note7--;
+        }
+      }
     });
   }
 
@@ -122,10 +186,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 _note5 * 4 +
                 _note6 * 4 +
                 _note7 * 4;
+            _note = (_note / 22).round();
+
             if (_note < 10) {
-              _affichage = "Vous n'avez pas le bts voici votre note";
+              _affichage = "Vous n'avez pas le bts voici votre note $_note /20";
             } else {
-              _affichage = "Vous avez le bts";
+              _affichage = "Vous avez le bts voici votre note $_note /20";
             }
           }
           break;
@@ -138,6 +204,7 @@ class _MyHomePageState extends State<MyHomePage> {
             _note5 = 10;
             _note6 = 10;
             _note7 = 10;
+            _affichage = "";
           }
           break;
       }
@@ -145,8 +212,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   String _affichage = "";
-  int _index = 0;
-
   int _indexSelectionne = 0;
   @override
   Widget build(BuildContext context) {
@@ -298,195 +363,82 @@ class _MyHomePageState extends State<MyHomePage> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    const Padding(padding: EdgeInsets.all(30)),
-                    ElevatedButton(
-                      onPressed: _incrementThis(_note1),
-                      child: const Text(
-                        '+',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.resolveWith(
-                            (states) => Colors.red),
-                        elevation:
-                            MaterialStateProperty.resolveWith((states) => 8),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: _incrementThis(_note2),
-                      child: const Text(
-                        '+',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.resolveWith(
-                            (states) => Colors.red),
-                        elevation:
-                            MaterialStateProperty.resolveWith((states) => 8),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: _incrementThis(_note3),
-                      child: const Text(
-                        '+',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.resolveWith(
-                            (states) => Colors.red),
-                        elevation:
-                            MaterialStateProperty.resolveWith((states) => 8),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: _incrementThis(_note4),
-                      child: const Text(
-                        '+',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.resolveWith(
-                            (states) => Colors.red),
-                        elevation:
-                            MaterialStateProperty.resolveWith((states) => 8),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: _incrementThis(_note5),
-                      child: const Text(
-                        '+',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.resolveWith(
-                            (states) => Colors.red),
-                        elevation:
-                            MaterialStateProperty.resolveWith((states) => 8),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: _incrementThis(_note6),
-                      child: const Text(
-                        '+',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.resolveWith(
-                            (states) => Colors.red),
-                        elevation:
-                            MaterialStateProperty.resolveWith((states) => 8),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: _incrementThis(_note7),
-                      child: const Text(
-                        '+',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.resolveWith(
-                            (states) => Colors.red),
-                        elevation:
-                            MaterialStateProperty.resolveWith((states) => 8),
-                      ),
-                    ),
+                    IconButton(
+                        onPressed: () {
+                          _incrementThis("_note1");
+                        },
+                        icon: add),
+                    IconButton(
+                        onPressed: () {
+                          _incrementThis("_note2");
+                        },
+                        icon: add),
+                    IconButton(
+                        onPressed: () {
+                          _incrementThis("_note3");
+                        },
+                        icon: add),
+                    IconButton(
+                        onPressed: () {
+                          _incrementThis("_note4");
+                        },
+                        icon: add),
+                    IconButton(
+                        onPressed: () {
+                          _incrementThis("_note5");
+                        },
+                        icon: add),
+                    IconButton(
+                        onPressed: () {
+                          _incrementThis("_note6");
+                        },
+                        icon: add),
+                    IconButton(
+                        onPressed: () {
+                          _incrementThis("_note7");
+                        },
+                        icon: add)
                   ],
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    const Padding(padding: EdgeInsets.all(30)),
-                    ElevatedButton(
-                      onPressed: _decrementThis(_note1),
-                      child: const Text(
-                        '-',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.resolveWith(
-                            (states) => Colors.red),
-                        elevation:
-                            MaterialStateProperty.resolveWith((states) => 8),
-                      ),
+                    IconButton(
+                      onPressed: () {
+                        _decrementThis("_note1");
+                      },
+                      icon: remove,
                     ),
-                    ElevatedButton(
-                      onPressed: _decrementThis(_note2),
-                      child: const Text(
-                        '-',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.resolveWith(
-                            (states) => Colors.red),
-                        elevation:
-                            MaterialStateProperty.resolveWith((states) => 8),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: _decrementThis(_note3),
-                      child: const Text(
-                        '-',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.resolveWith(
-                            (states) => Colors.red),
-                        elevation:
-                            MaterialStateProperty.resolveWith((states) => 8),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: _decrementThis(_note4),
-                      child: const Text(
-                        '-',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.resolveWith(
-                            (states) => Colors.red),
-                        elevation:
-                            MaterialStateProperty.resolveWith((states) => 8),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: _decrementThis(_note5),
-                      child: const Text(
-                        '-',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.resolveWith(
-                            (states) => Colors.red),
-                        elevation:
-                            MaterialStateProperty.resolveWith((states) => 8),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: _decrementThis(_note6),
-                      child: const Text(
-                        '-',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.resolveWith(
-                            (states) => Colors.red),
-                        elevation:
-                            MaterialStateProperty.resolveWith((states) => 8),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: _decrementThis(_note7),
-                      child: const Text(
-                        '-',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.resolveWith(
-                            (states) => Colors.red),
-                        elevation:
-                            MaterialStateProperty.resolveWith((states) => 8),
-                      ),
-                    ),
+                    IconButton(
+                        onPressed: () {
+                          _decrementThis("_note2");
+                        },
+                        icon: remove),
+                    IconButton(
+                        onPressed: () {
+                          _decrementThis("_note3");
+                        },
+                        icon: remove),
+                    IconButton(
+                        onPressed: () {
+                          _decrementThis("_note4");
+                        },
+                        icon: remove),
+                    IconButton(
+                        onPressed: () {
+                          _decrementThis("_note5");
+                        },
+                        icon: remove),
+                    IconButton(
+                        onPressed: () {
+                          _decrementThis("_note6");
+                        },
+                        icon: remove),
+                    IconButton(
+                        onPressed: () {
+                          _decrementThis("_note7");
+                        },
+                        icon: remove)
                   ],
                 ),
               ],
