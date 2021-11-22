@@ -86,23 +86,26 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void incrementThis(note) {
+  _incrementThis(int _note) {
     setState(() {
-      if (note != 20) {
-        note++;
+      if (_note != 20) {
+        _note++;
       }
     });
   }
 
-  void _decrementThis(note) {
+  /*_decrementThis(int note) {
     setState(() {
       if (note != 0) {
         note--;
       }
     });
-  }
-  void buttonMinusOnPressed() {
-    incrementThis(_note1);
+  }*/
+
+  _decrementThis(int note) {
+    setState(() {
+      note--;
+    });
   }
 
   void _itemClique(int index) {
@@ -120,21 +123,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 _note6 * 4 +
                 _note7 * 4;
             if (_note < 10) {
-              _affichage = "Vous n'avez pas le bts";
+              _affichage = "Vous n'avez pas le bts voici votre note";
             } else {
               _affichage = "Vous avez le bts";
             }
           }
           break;
-        case 2:
+        case 1:
           {
-            _note1 = _indexSelectionne = 10;
-            _note2 = _indexSelectionne = 10;
-            _note3 = _indexSelectionne = 10;
-            _note4 = _indexSelectionne = 10;
-            _note5 = _indexSelectionne = 10;
-            _note6 = _indexSelectionne = 10;
-            _note7 = _indexSelectionne = 10;
+            _note1 = 10;
+            _note2 = 10;
+            _note3 = 10;
+            _note4 = 10;
+            _note5 = 10;
+            _note6 = 10;
+            _note7 = 10;
           }
           break;
       }
@@ -294,49 +297,232 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const <Widget>[
-                    Padding(padding: EdgeInsets.all(30)),
+                  children: <Widget>[
+                    const Padding(padding: EdgeInsets.all(30)),
                     ElevatedButton(
-                    onPressed: buttonMinusOnPressed),
-                    child: Text(
-                    '-',
-                    style: TextStyle(color: Colors.white),
+                      onPressed: _incrementThis(_note1),
+                      child: const Text(
+                        '+',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith(
+                            (states) => Colors.red),
+                        elevation:
+                            MaterialStateProperty.resolveWith((states) => 8),
+                      ),
                     ),
-                    style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.resolveWith((states) => Colors.red),
-                    elevation: MaterialStateProperty.resolveWith((states) => 8),
-              ),
-            ),
+                    ElevatedButton(
+                      onPressed: _incrementThis(_note2),
+                      child: const Text(
+                        '+',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith(
+                            (states) => Colors.red),
+                        elevation:
+                            MaterialStateProperty.resolveWith((states) => 8),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: _incrementThis(_note3),
+                      child: const Text(
+                        '+',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith(
+                            (states) => Colors.red),
+                        elevation:
+                            MaterialStateProperty.resolveWith((states) => 8),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: _incrementThis(_note4),
+                      child: const Text(
+                        '+',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith(
+                            (states) => Colors.red),
+                        elevation:
+                            MaterialStateProperty.resolveWith((states) => 8),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: _incrementThis(_note5),
+                      child: const Text(
+                        '+',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith(
+                            (states) => Colors.red),
+                        elevation:
+                            MaterialStateProperty.resolveWith((states) => 8),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: _incrementThis(_note6),
+                      child: const Text(
+                        '+',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith(
+                            (states) => Colors.red),
+                        elevation:
+                            MaterialStateProperty.resolveWith((states) => 8),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: _incrementThis(_note7),
+                      child: const Text(
+                        '+',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith(
+                            (states) => Colors.red),
+                        elevation:
+                            MaterialStateProperty.resolveWith((states) => 8),
+                      ),
+                    ),
                   ],
                 ),
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: const <Widget>[],
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    const Padding(padding: EdgeInsets.all(30)),
+                    ElevatedButton(
+                      onPressed: _decrementThis(_note1),
+                      child: const Text(
+                        '-',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith(
+                            (states) => Colors.red),
+                        elevation:
+                            MaterialStateProperty.resolveWith((states) => 8),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: _decrementThis(_note2),
+                      child: const Text(
+                        '-',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith(
+                            (states) => Colors.red),
+                        elevation:
+                            MaterialStateProperty.resolveWith((states) => 8),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: _decrementThis(_note3),
+                      child: const Text(
+                        '-',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith(
+                            (states) => Colors.red),
+                        elevation:
+                            MaterialStateProperty.resolveWith((states) => 8),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: _decrementThis(_note4),
+                      child: const Text(
+                        '-',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith(
+                            (states) => Colors.red),
+                        elevation:
+                            MaterialStateProperty.resolveWith((states) => 8),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: _decrementThis(_note5),
+                      child: const Text(
+                        '-',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith(
+                            (states) => Colors.red),
+                        elevation:
+                            MaterialStateProperty.resolveWith((states) => 8),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: _decrementThis(_note6),
+                      child: const Text(
+                        '-',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith(
+                            (states) => Colors.red),
+                        elevation:
+                            MaterialStateProperty.resolveWith((states) => 8),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: _decrementThis(_note7),
+                      child: const Text(
+                        '-',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith(
+                            (states) => Colors.red),
+                        elevation:
+                            MaterialStateProperty.resolveWith((states) => 8),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-          )
+          ),
+          Expanded(
+              flex: 3,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Text(
+                    _affichage,
+                    style: const TextStyle(color: Colors.red, fontSize: 40),
+                  ),
+                ],
+              ))
         ],
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: _addThis, backgroundColor: Colors.red, child: add),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home,
+              Icons.calculate,
               color: Colors.white,
             ),
-            label: 'Accueil',
+            label: 'Calculer',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.assessment,
+              Icons.reset_tv,
               color: Colors.white,
             ),
-            label: 'Statistiques',
+            label: 'Remettre a 10',
           ),
         ],
         backgroundColor: Colors.red,
@@ -345,19 +531,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       drawer: Drawer(
         child: Column(
-          children: const <Widget>[
-            DrawerHeader(
-              child: Text(
-                'Menu de navigation',
-                style: TextStyle(
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25),
-              ),
-            ),
-            Text('Lien 1'),
-            Text('Lien 3'),
-          ],
+          children: const <Widget>[],
         ),
       ),
     );
